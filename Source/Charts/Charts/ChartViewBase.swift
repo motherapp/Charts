@@ -530,6 +530,9 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     {
         highlightValue(highlight, callDelegate: false)
     }
+    
+    /// reference to the last highlighted object
+    public var _lastHighlight: Highlight!
 
     /// Highlights the value selected by touch gesture.
     open func highlightValue(_ highlight: Highlight?, callDelegate: Bool)
@@ -540,6 +543,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
         if h == nil
         {
             _indicesToHighlight.removeAll(keepingCapacity: false)
+            _lastHighlight = nil
         }
         else
         {
@@ -549,10 +553,12 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
             {
                 h = nil
                 _indicesToHighlight.removeAll(keepingCapacity: false)
+                _lastHighlight = nil
             }
             else
             {
                 _indicesToHighlight = [h!]
+                _lastHighlight = h
             }
         }
         

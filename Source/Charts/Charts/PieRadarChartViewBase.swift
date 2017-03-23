@@ -817,8 +817,8 @@ open class PieRadarChartViewBase: ChartViewBase
         return sqrt(dx * dx + dy * dy)
     }
     
-    /// reference to the last highlighted object
-    fileprivate var _lastHighlight: Highlight!
+//    /// reference to the last highlighted object
+//    fileprivate var _lastHighlight: Highlight!
     
     @objc fileprivate func tapGestureRecognized(_ recognizer: NSUITapGestureRecognizer)
     {
@@ -829,7 +829,15 @@ open class PieRadarChartViewBase: ChartViewBase
             let location = recognizer.location(in: self)
             
             let high = self.getHighlightByTouchPoint(location)
-            self.highlightValue(high, callDelegate: true)
+            
+            if (_lastHighlight !== nil && high !== nil && (high?.isEqual(_lastHighlight))!)
+            {
+                self.highlightValue(nil, callDelegate: true)
+            }
+            else
+            {
+                self.highlightValue(high, callDelegate: true)
+            }
         }
     }
     
