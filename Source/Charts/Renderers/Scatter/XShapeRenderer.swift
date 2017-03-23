@@ -9,6 +9,7 @@
 //  https://github.com/danielgindi/Charts
 //
 import Foundation
+import UIKit
 
 open class XShapeRenderer : NSObject, IShapeRenderer
 {

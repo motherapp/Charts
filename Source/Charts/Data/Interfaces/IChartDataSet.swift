@@ -10,6 +10,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc
 public protocol IChartDataSet

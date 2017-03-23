@@ -10,6 +10,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc(ChartHighlight)
 open class Highlight: NSObject
